@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card</title>
+
+    <!-- Google Fonts for Poppins and Libre Baskerville -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Libre+Baskerville&display=swap" rel="stylesheet">
+    
+    <!-- For Euclid Circular A, if you have a web font service or local file, you can link it like this: -->
+    <link rel="stylesheet" href="path/to/your/euclid-circular-a-font.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .card {
+            overflow: hidden;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: calc(18rem + 20px);
+            height: calc(350px + 35px);
+            background-color: white;
+        }
+
+        .card-body {
+            background-color: #fff;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+            margin: 10px 0;
+            font-family: 'Euclid Circular A', sans-serif;
+        }
+
+        .price {
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .old-price {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .orders {
+            font-size: 0.9rem;
+        }
+
+        .badge-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .d-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .badge-container span {
+            margin-left: 10px;
+        }
+
+        /* "New Arrivals" Badge Dynamic Effects */
+        .badge {
+            background-color: black;
+            color: white;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            border-radius: 3px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .badge:hover {
+            background-color: #333;
+            transform: scale(1.1);
+        }
+
+        /* Image Styling: Full Width and Height without Space */
+        .card-img-top {
+            width: 100%;
+            height: 270px; /* Keep a fixed height */
+           
+        }
+
+        /* Responsive Design for smaller screens */
+        @media (max-width: 576px) {
+            .card {
+                width: 100%;
+                height: auto;
+            }
+            .card-body {
+                padding: 10px;
+            }
+        }
+        .top1{
+            width: 80%;         /* Set the width of the div */
+            margin: 0 auto;       /* Horizontally centers the div */
+            background-color: #6F6A42;
+            padding-left: 5px;
+            padding-top: 10px;
+        }
+         .top11{
+            font-weight: bolder;       
+          }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <img src="images/pic1.jpg" class="card-img-top" alt="Product Image">
+        <div class="card-body">
+          <p class="card-title">Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse</p>
+          
+          <!-- Price and orders in one line with space between -->
+          <div class="d-flex">
+            <div>
+              <span class="price">$120.23</span>
+            </div>
+            <span class="orders">22 Orders</span>
+          </div>
+      
+          <!-- Badge and old price aligned properly -->
+          <div class="badge-container mt-2">
+            <span class="old-price">$150.00</span>
+            <span class="badge">New Arrivals</span>
+          </div>
+        </div>
+    </div>
+
+    <div class="top1">
+       <p class="top11">Ladies Top</p>
+       <p> Slash Sales begins in August. Get up to 80% Discount on all products Read More</p>
+    </div>
+</body>
+</html>

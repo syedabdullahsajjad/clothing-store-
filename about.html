@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>About Us</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Libre+Baskerville&display=swap"
+            rel="stylesheet">
+        <style>   
+body {
+    font-family: 'Poppins', sans-serif; 
+}
+.euc-font {
+    font-family: 'Euclid Circular A', sans-serif;
+}
+.serif-font {
+    font-family: 'Libre Baskerville', serif;
+}
+.container11 {
+    font-family: 'Poppins', sans-serif; 
+}
+.bold {
+    font-family: 'Euclid Circular A', sans-serif; 
+}
+.span11, .span12 {
+    font-family: 'Libre Baskerville', serif; 
+}
+.custom-navbar {
+    background-color: transparent; /* Keep the original background */
+    border-bottom: 1px solid #ddd;
+    padding: 20px 20px; /* Top and horizontal padding */
+  }
+
+  .navbar-brand {
+    font-size: 1.5rem;
+    color: #224F34;
+    padding-top: 20px; /* Padding from the top */
+  }
+
+  .nav-items {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between each item */
+    margin-left: auto; /* Push all items to the right */
+  }
+
+  .custom-link {
+    color: #224F34;
+    font-weight: bold;
+    transition: color 0.3s;
+    text-decoration: none;
+  }
+
+  .custom-link:hover {
+    color: #6F6A42; /* Hover color */
+  }
+
+  .custom-cart-icon {
+    font-size: 1.5rem;
+    color: #224F34;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .custom-cart-icon:hover {
+    color: #6F6A42;
+  }
+
+  .custom-login-btn {
+    background-color: #6F6A42;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  .custom-login-btn:hover {
+    background-color: #224F34;
+  }
+        .about-section {
+            padding: 40px 0;
+        }
+        .about-title {
+            color: #6F6A42;
+            font-size: 2rem;
+            font-weight: bold;
+            padding-top: 20px;
+        }
+        .font{
+            font-family:  Poppins, Euclid  Circular A, Libre Baskerville;
+            font-weight: 600; 
+            letter-spacing: 0.5px; 
+            line-height: 1.8; 
+        }
+        .mission-section {
+            background-color: #f7f6f2; 
+            padding: 50px 0;
+        }
+        
+        .mission-title {
+            color: #6F6A42;
+            font-size: 2rem;
+            font-weight: 900; /* Increase font weight for bolder text */
+            letter-spacing: 1.5px; /* Adjust the spacing between letters */
+        }
+        
+        .mission-section p {
+            font-weight: 600; /* Make paragraph text bolder */
+            letter-spacing: 0.5px; /* Add a little letter spacing for readability */
+            line-height: 1.8; /* Adjust line height for better spacing */
+        }
+        .team-section {
+            text-align: center;
+            padding: 50px 0;
+            background-color: #9b9a93; /* Light background color */
+            height: 80vh;
+        }
+        
+        .team-title {
+            font-size: 2rem;
+            font-weight: 700; /* Bold text */
+            color: #6F6A42; /* Color for the title */
+            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+        }
+        
+        .team-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        
+        .team-member {
+            width: 100%; /* Default to full width */
+            max-width: 200px; /* Restrict max width to 200px */
+            height: auto; /* Adjust height automatically based on image aspect ratio */
+            margin: 10px;
+        }
+        
+        .team-member img {
+            width: 100%;
+            height: auto; /* This will make the image scale proportionally */
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .footer {
+            background-color: #4F4A33; /* Customize to match your desired color */
+            color: white;
+            padding: 40px 20px;
+          }
+      
+          .footer .footer-section {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: auto;
+            flex-wrap: wrap;
+            gap: 20px; /* Adjust gap between sections */
+          }
+      
+          .footer h3 {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 20px;
+          }
+      
+          .footer p,
+          .footer a {
+            color: white;
+            text-decoration: none;
+            margin-bottom: 8px;
+            display: block;
+          }
+      
+          .footer .social-icons {
+            display: flex;
+            flex-direction: row; /* Stack icons vertically */
+            gap: 10px; /* Space between icons */
+          }
+      
+          .footer .social-icons a {
+            color: white;
+            font-size: 24px;
+          }
+      
+          .footer .subscribe {
+            display: flex;
+            gap: 10px;
+            align-items: center; /* Align input and button vertically */
+          }
+      
+          .footer .subscribe input[type="email"] {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            width: 200px;
+          }
+      
+          .footer .subscribe button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #D2C07F; /* Customize to match your desired button color */
+            color: #4F4A33;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+          }
+      
+          .footer-bottom {
+            border-top: 1px solid #D2C07F;
+            margin-top: 20px;
+            padding-top: 20px;
+            display: flex;
+            justify-content: end;
+          }
+      
+          .footer-bottom a {
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+          }
+      
+          /* Responsive adjustments */
+          @media (max-width: 768px) {
+            .footer .footer-section {
+              flex-direction: column;
+              align-items: center;
+              text-align: center;
+            }
+      
+            .footer .social-icons {
+              justify-content: center;
+              flex-direction: row;
+            }
+      
+            .footer .subscribe {
+              flex-direction: column;
+            }
+      
+            .footer .subscribe input[type="email"] {
+              width: 100%;
+            }
+          }
+
+          .container11 {
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            border-radius: 8px;
+            width: 100%;
+            color: black;
+            padding: 20px;
+        }
+        
+        .bold, .span12 ,.span11{
+            font-weight: bold;
+        }
+        .bold{
+          padding:0;
+          margin: 0;
+        }
+        
+        .container11 p:first-of-type, 
+        .container11 p:nth-of-type(2) {
+            padding-left: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .con11 {
+            background-color: #6F6A42;
+            padding: 20px;
+            color: white;
+            border-radius: 8px;
+        }
+        
+        .input-container-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px; /* Space between text and input field */
+            margin-top: 10px;
+        }
+        
+        .span11 {
+            font-size: 14px;
+            color: white;
+            margin: 0;
+            flex: 1; /* Allow the text to take available space */
+        }
+        
+        .input-container {
+            display: flex;
+            gap: 10px;
+        }
+        
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            flex: 1;
+        }
+        
+        .continue-button {
+            padding: 8px 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .continue-button:hover {
+            background-color: #45a049;
+        }
+        
+        .span12 {
+            display: block;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #fff;
+        }
+        
+        
+</style>
+    </head>
+    <body>
+
+        <!-- Navbar -->
+        <nav class="custom-navbar navbar navbar-expand-lg">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">LOGO</a>
+              <!-- Toggler Button (for small screens) -->
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <!-- Navbar Links and Buttons (Collapsing on small screens) -->
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                    <a class="nav-link custom-link" href="home.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link custom-link" href="features.html">Shop</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link custom-link" href="deatil.html">Features</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link custom-link" href="about.html">About us</a>
+                  </li>
+                </ul>
+                <div class="d-flex align-items-center gap-3">
+                  <!-- Cart Icon -->
+                  <i class="bi bi-cart custom-cart-icon"></i>
+                  <!-- Login Button as Link -->
+                  <a href="login.html">
+                    <button class="btn custom-login-btn">Login</button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </nav>
+
+        <!-- About Section -->
+        <section class="about-section container my-5">
+          <div class="row align-items-center">
+              <!-- Text Column -->
+              <div class="col-md-6 order-md-1 order-2">
+                  <h1 class="about-title">About Us</h1>
+                  <p class="font">
+                      Welcome to Logo – your ultimate destination for cool and trendy fashion! At Logo, we are dedicated to providing the latest styles that resonate with the vibrant and dynamic spirit of today's youth. Our collection is carefully curated to ensure that every piece embodies the cutting-edge trends and timeless coolness that define your unique style.
+                  </p>
+              </div>
+              <!-- Image Column -->
+              <div class="col-md-6 order-md-2 order-1">
+                  <img src="images/pic5.jpg" class="img-fluid rounded" alt="Fashionable woman in trendy outfit">
+              </div>
+          </div>
+      </section>
+      
+      
+
+        <!-- section 2  -->
+
+        <section class="mission-section container-fluid py-5">
+            <div class="container">
+                <h2 class="text-center mission-title mb-4">Our Mission</h2>
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <img src="images\main.jpg" class="img-fluid rounded"
+                            alt="Clothes on hangers">
+                    </div>
+                    <div class="col-md-6">
+                        <p>Our mission is simple: to inspire and empower
+                            youngsters to express themselves through fashion.
+                            Whether you're looking for the perfect outfit for a
+                            night out, a casual day at school, or anything in
+                            between, Logo has you covered. We believe in fashion
+                            as a form of self-expression, and our diverse range
+                            of clothing is designed to cater to every mood and
+                            moment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- our team -->
+        <section class="team-section">
+            <h2 class="team-title">Our Team</h2>
+            <div class="team-container">
+                <div class="team-member">
+                    <img src="images\pic3.jpg" alt="Team Member 1">
+                </div>
+                <div class="team-member">
+                    <img src="images\pic3.jpg" alt="Team Member 2">
+                </div>
+                <div class="team-member">
+                    <img src="images\pic3.jpg" alt="Team Member 3">
+                </div>
+                <div class="team-member">
+                    <img src="images\pic3.jpg" alt="Team Member 4">
+                </div>
+            </div>
+        </section>
+        <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-lg-8 col-md-10 col-sm-12">
+                  <div class="container11">
+                      <p class="bold">Lorem, ipsum.</p>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                      <div class="con11">
+                          <p class="bold">Stay in the loop</p>
+                          <div class="input-container-wrapper">
+                              <span class="span11">Subscribe to receive the latest news and updates about TDA.</span>
+                              <div class="input-container">
+                                  <input type="text" class="form-control" placeholder="Enter your email">
+                                  <button type="button" class="continue-button">Continue</button>
+                              </div>
+                          </div>
+                          <span class="span12">We promise not to spam you!</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      
+
+        <!-- footer section -->
+        <footer class="footer">
+            <div class="footer-section">
+                <!-- Logo and Social Media Section -->
+                <div>
+                    <h3>LOGO</h3>
+                    <p>Social Media</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+
+                <!-- Shop Section -->
+                <div>
+                    <h3>SHOP</h3>
+                    <a href="#">Products</a>
+                    <a href="#">Overview</a>
+                    <a href="#">Pricing</a>
+                    <a href="#">Releases</a>
+                </div>
+
+                <!-- Company Section -->
+                <div>
+                    <h3>COMPANY</h3>
+                    <a href="#">About Us</a>
+                    <a href="#">Contact</a>
+                    <a href="#">News</a>
+                    <a href="#">Support</a>
+                </div>
+
+                <!-- Subscribe Section -->
+                <div>
+                    <h3>STAY UP TO DATE</h3>
+                    <form class="subscribe">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit">SUBMIT</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Footer Bottom Section -->
+            <div class="footer-bottom">
+                <a href="#">Terms</a>
+                <a href="#">Privacy</a>
+                <a href="#">Cookies</a>
+            </div>
+        </footer>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

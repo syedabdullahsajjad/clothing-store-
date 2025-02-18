@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Product Description Page</title>
+    <style>
+        /* Navbar base styling */
+.custom-navbar {
+    background-color: transparent; /* Keep the original background */
+    border-bottom: 1px solid #ddd;
+    padding: 20px 20px; /* Top and horizontal padding */
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    color: #224F34;
+    padding-top: 20px; /* Padding from the top */
+}
+
+.nav-items {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between each item */
+    margin-left: auto; /* Push all items to the right */
+}
+
+.custom-link {
+    color: #224F34;
+    font-weight: bold;
+    transition: color 0.3s;
+    text-decoration: none;
+}
+
+.custom-link:hover {
+    color: #6F6A42; /* Hover color */
+}
+
+.custom-cart-icon {
+    font-size: 1.5rem;
+    color: #224F34;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.custom-cart-icon:hover {
+    color: #6F6A42;
+}
+
+.custom-login-btn {
+    background-color: #6F6A42;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.custom-login-btn:hover {
+    background-color: #224F34;
+}
+
+/* Responsive navbar adjustments */
+@media (max-width: 768px) {
+    .nav-items {
+        display: none; /* Hide nav items by default on smaller screens */
+        flex-direction: column;
+        background-color: white;
+        position: absolute;
+        top: 60px; /* Adjust to fit below the navbar */
+        width: 100%;
+        left: 0;
+        padding: 20px;
+        border-top: 1px solid #ddd;
+    }
+
+    .nav-items.show {
+        display: flex; /* Show nav items when toggled */
+    }
+
+    .navbar-toggler {
+        display: block;
+        font-size: 1.5rem;
+        color: #224F34;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+    }
+}
+
+/* Basic reset and general styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .image-column {
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            height: 650px;
+            padding-top: 20px;
+        }
+        .small-image {
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+        .large-image {
+            width: 100%;
+            height: 650px;
+            object-fit: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            border-radius: 30px;
+            padding-top: 20px;
+            
+        }
+        .col-description {
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            font-family: 'Libre Baskerville', serif;
+        }
+        h1 {
+            font-size: 1.75rem;
+            font-weight: bold;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+        .star-rating {
+            direction: rtl;
+            display: inline-block;
+        }
+        .star-rating input {
+            display: none;
+        }
+        .star-rating label {
+            font-size: 30px;
+            color: lightgray;
+            cursor: pointer;
+        }
+        .star-rating input:checked ~ label,
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: gold;
+        }
+        .price-container {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+        }
+        .original-price {
+            text-decoration: line-through;
+            color: red;
+        }
+        .discounted-price {
+            font-weight: bold;
+            color: green;
+        }
+        .discount {
+            font-size: 14px;
+            color: gray;
+        }
+        .color-option {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+        .color-option input[type="radio"] {
+            display: none;
+        }
+        .color-option-red { background-color: red; }
+        .color-option-black { background-color: black; }
+        .color-option-orange { background-color: orange; }
+        .color-option input[type="radio"]:checked + label {
+            border-color: #000;
+        }
+        .buttons-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cart-button,
+        .favourites-button {
+            width: 30%;
+            font-weight: bold;
+            color: white;
+            background-color: #6F6A42;
+            border: none;
+            cursor: pointer;
+        }
+        .favourites-button {
+            background-color: #e1b12c;
+            width: 50%;
+        }
+        .description1{
+            border-bottom: 1px solid black;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 50px;
+            margin-top: 40px;
+            font-weight: 700 ;
+        }
+        .description1:hover{
+            color: blue;
+            text-decoration: underline;
+        }
+        .Product-Details{
+            padding:0  50px;
+            margin-top: 20px;
+        }
+        .bold{
+            font-size: larger;
+            font-weight: bolder;
+            color: #000;
+            padding: 0;
+            margin: 0;
+        }
+        .pad{
+            padding: 0;
+            margin: 0;
+        }
+        /* CSS for Product Details Section */
+.description1 {
+    display: flex;
+    flex-direction: row; /* Arrange spans horizontally */
+    gap: 10px; /* Adds space between each span */
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 0 50px;
+}
+
+.description1 span {
+    cursor: pointer;
+    color:black;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.description1 span:hover {
+    color: #0381e8; /* Hover color */
+}
+
+
+
+.Product-Details {
+    padding: 0 50px;
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+.Product-Details .bold {
+    font-size: larger;
+    font-weight: bolder;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.Product-Details .pad {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Styles for Similar Products and Customer Also Like sections */
+.similer, .customer-like {
+    padding: 0 50px;
+    margin-top: 40px;
+}
+
+.similer .bold, .customer-like .bold {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.similer .row, .customer-like .row {
+    display: flex;
+    flex-wrap: nowrap; /* Ensures cards stay in a single row */
+    gap: 10px; /* Adds spacing between cards */
+}
+
+.similer .card, .customer-like .card {
+    width: 16rem; /* Adjusted width to fit four cards in a row */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    margin: 5px; /* Adds slight margin around cards */
+}
+
+.similer .card:hover, .customer-like .card:hover {
+    transform: scale(1.05);
+}
+
+.similer .card-img-top, .customer-like .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.similer .card-title, .customer-like .card-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.similer .price-container, .customer-like .price-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.similer .original-price, .customer-like .original-price {
+    text-decoration: line-through;
+    color: red;
+    font-size: 0.9rem;
+}
+
+.similer .discounted-price, .customer-like .discounted-price {
+    font-weight: bold;
+    color: green;
+}
+
+.similer .discount, .customer-like .discount {
+    font-size: 0.85rem;
+    color: gray;
+}
+.footer {
+    background-color: #4F4A33; /* Customize to match your desired color */
+    color: white;
+    padding: 40px 20px;
+  }
+
+  .footer .footer-section {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust gap between sections */
+  }
+
+  .footer h3 {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .footer p,
+  .footer a {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .footer .social-icons {
+    display: flex;
+    flex-direction: row; /* Stack icons vertically */
+    gap: 10px; /* Space between icons */
+  }
+
+  .footer .social-icons a {
+    color: white;
+    font-size: 24px;
+  }
+
+  .footer .subscribe {
+    display: flex;
+    gap: 10px;
+    align-items: center; /* Align input and button vertically */
+  }
+
+  .footer .subscribe input[type="email"] {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    width: 200px;
+  }
+
+  .footer .subscribe button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #D2C07F; /* Customize to match your desired button color */
+    color: #4F4A33;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid #D2C07F;
+    margin-top: 20px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: end;
+  }
+
+  .footer-bottom a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+  }
+ /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .footer .footer-section {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .footer .social-icons {
+      justify-content: center;
+      flex-direction: row;
+    }
+    .footer .subscribe {
+      flex-direction: column;
+    }
+    .footer .subscribe input[type="email"] {
+      width: 100%;
+    }
+  }
+    </style>
+</head>
+<body>
+    <nav class="custom-navbar navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">LOGO</a>
+            <!-- Toggler Button (for small screens) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navbar Links and Buttons (Collapsing on small screens) -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link custom-link" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link custom-link" href="features.html">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link custom-link" href="detail.html">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link custom-link" href="about.html">About us</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center gap-3">
+                    <!-- Cart Icon -->
+                    <i class="bi bi-cart custom-cart-icon"></i>
+                    <!-- Login Button as Link -->
+                    <a href="login.html">
+                        <button class="btn custom-login-btn">Login</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+<div class="container-fluid">
+    <div class="row">
+        <!-- Column for small images -->
+        <div class="col-images col-md-2">
+            <div class="image-column">
+                <img src="images/pic1.jpg" alt="Image 1" class="small-image">
+                <img src="images/pic2.jpg" alt="Image 2" class="small-image">
+                <img src="images/pic3.jpg" alt="Image 3" class="small-image">
+                <img src="images/pic4.jpg" alt="Image 4" class="small-image">
+                <img src="images/pic5.jpg" alt="Image 5" class="small-image">
+            </div>
+        </div>
+
+        <!-- Column for larger image -->
+        <div class="col-md-5">
+            <div class="text-center">
+                <img src="images/pic6.jpg" alt="Large Product Image" class="large-image">
+            </div>
+        </div>
+
+        <!-- Column for product description -->
+        <div class="col-md-5 col-description">
+            <h1>Womens Denim Jacket (Blue)</h1>
+            <h2>Brand Name</h2>
+            <h3>Sold By: Seller's Name</h3>
+            <div class="star-rating">
+                <input type="radio" id="star1" name="rating" value="5" />
+                <label for="star1" title="5 stars">&#9733;</label>
+                
+                <input type="radio" id="star2" name="rating" value="4" />
+                <label for="star2" title="4 stars">&#9733;</label>
+                
+                <input type="radio" id="star3" name="rating" value="3" />
+                <label for="star3" title="3 stars">&#9733;</label>
+                
+                <input type="radio" id="star4" name="rating" value="2" />
+                <label for="star4" title="2 stars">&#9733;</label>
+                
+                <input type="radio" id="star5" name="rating" value="1" />
+                <label for="star5" title="1 star">&#9733;</label>
+            </div>
+            <span>4.4 (36 Reviews)</span>
+            <div class="price-container">
+                <span class="original-price">Rs. 1000</span>
+                <span class="discounted-price">Rs. 700</span>
+                <span class="discount">30% off</span>
+            </div>
+
+            <!-- Size Selection -->
+            <p>Select Size</p>
+            <select class="form-control w-50 mb-3">
+                <option value="XL">XL</option>
+                <option value="L">L</option>
+                <option value="M">M</option>
+                <option value="S">S</option>
+            </select>
+
+            <!-- Color Selection -->
+            <p>Select Color</p>
+            <div class="d-flex align-items-center mb-3">
+                <div class="color-option">
+                    <input type="radio" id="color-red" name="color" value="Red">
+                    <label for="color-red" class="color-option color-option-red"></label>
+                </div>
+                <div class="color-option">
+                    <input type="radio" id="color-black" name="color" value="Black">
+                    <label for="color-black" class="color-option color-option-black"></label>
+                </div>
+                <div class="color-option">
+                    <input type="radio" id="color-orange" name="color" value="Orange">
+                    <label for="color-orange" class="color-option color-option-orange"></label>
+                </div>
+            </div>
+
+            <p>Best Offers</p>
+            <p>Special offer: get 25% off (T&C)</p>
+            <p>Bank offer: 30% off on Axis Bank Credit card (T&C)</p>
+            <p>Wallet offer: 40% cashback via Paytm wallet on first transaction (T&C)</p>
+            <p>Special offer: get 25% off (T&C)</p>
+
+            <div class="buttons-container">
+                <button class="cart-button">Add to Cart</button>
+                <button class="favourites-button">Add to Favourites</button>
+            </div>
+        </div>
+    </div>
+    <div class="description1">
+        <span> Product Details</span><span>Specification</span><span>Ratings & Reviews</span>
+    </div>
+    <div class="Product-Details">
+        <p class="bold"> Product Details</p>
+        <p class="pad"> Blue washed jacket, has a spread collar, 4 pockets, button closure, long sleeves, straight hem</p>
+        <p class="bold"> Size & Fit</p>
+        <p class="pad">The model (height 5'8") is wearing a size S</p>
+        <p class="bold"> Material & Care</p>
+        <p class="pad">100% cotton <br> Machine Wash</p>
+    </div>
+
+    <div class="similer">
+        <p class="bold">Similar Products</p>
+        <div class="row">
+            <!-- Card 1 -->
+            <div class="card" style="width: 18rem;">
+                <img src="images/main.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title fw-bolder">Womens Denim Jacket</h5>
+                    <p class="card-text">
+                    <div class="price-container">
+                        <span class="original-price">Rs. 1000</span>
+                        <span class="discounted-price">Rs. 700</span>
+                        <span class="discount">30% off</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="card" style="width: 18rem;">
+                <img src="images/main.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title fw-bolder">Womens Denim Jacket</h5>
+                    <p class="card-text">
+                    <div class="price-container">
+                        <span class="original-price">Rs. 1000</span>
+                        <span class="discounted-price">Rs. 700</span>
+                        <span class="discount">30% off</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="card" style="width: 18rem;">
+                <img src="images/main.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title fw-bolder">Womens Denim Jacket</h5>
+                    <p class="card-text">
+                    <div class="price-container">
+                        <span class="original-price">Rs. 1000</span>
+                        <span class="discounted-price">Rs. 700</span>
+                        <span class="discount">30% off</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 4 -->
+            <div class="card" style="width: 18rem;">
+                <img src="images/main.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title fw-bolder">Womens Denim Jacket</h5>
+                    <p class="card-text">
+                    <div class="price-container">
+                        <span class="original-price">Rs. 1000</span>
+                        <span class="discounted-price">Rs. 700</span>
+                        <span class="discount">30% off</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+     <!-- Customer Also Like Section -->
+     <div class="customer-like mt-5">
+        <p class="bold">Customer Also Like</p>
+        <div class="row">
+            <!-- Card 1 -->
+            <div class="card" style="width: 18rem; margin: 10px;">
+                <img src="images/main.jpg" class="card-img-top" alt="Product Image">
+                <div class="card-body">
+                    <h5 class="card-title fw-bolder">Womens Casual Jacket</h5>
+                    <p class="card-text">
+                    <div class="price-container">
+                        <span class="original-price">Rs. 1200</span>
+                        <span class="discounted-price">Rs. 850</span>
+                        <span class="discount">30% off</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card" style="width: 18rem; margin: 10px;">
+                <img src="images/main.jpg" class="card-img-top" alt="Product Image">
+                <div class="card-body">
+                    <h5 class="card-title fw-bolder">Womens Casual Jacket</h5>
+                    <p class="card-text">
+                    <div class="price-container">
+                        <span class="original-price">Rs. 1200</span>
+                        <span class="discounted-price">Rs. 850</span>
+                        <span class="discount">30% off</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card" style="width: 18rem; margin: 10px;">
+                <img src="images/main.jpg" class="card-img-top" alt="Product Image">
+                <div class="card-body">
+                    <h5 class="card-title fw-bolder">Womens Casual Jacket</h5>
+                    <p class="card-text">
+                    <div class="price-container">
+                        <span class="original-price">Rs. 1200</span>
+                        <span class="discounted-price">Rs. 850</span>
+                        <span class="discount">30% off</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card" style="width: 18rem; margin: 10px;">
+                <img src="images/main.jpg" class="card-img-top" alt="Product Image">
+                <div class="card-body">
+                    <h5 class="card-title fw-bolder">Womens Casual Jacket</h5>
+                    <p class="card-text">
+                    <div class="price-container">
+                        <span class="original-price">Rs. 1200</span>
+                        <span class="discounted-price">Rs. 850</span>
+                        <span class="discount">30% off</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<footer class="footer">
+    <div class="footer-section">
+      <!-- Logo and Social Media Section -->
+      <div>
+        <h3>LOGO</h3>
+        <p>Social Media</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+
+      <!-- Shop Section -->
+      <div>
+        <h3>SHOP</h3>
+        <a href="#">Products</a>
+        <a href="#">Overview</a>
+        <a href="#">Pricing</a>
+        <a href="#">Releases</a>
+      </div>
+
+      <!-- Company Section -->
+      <div>
+        <h3>COMPANY</h3>
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+        <a href="#">News</a>
+        <a href="#">Support</a>
+      </div>
+
+      <!-- Subscribe Section -->
+      <div>
+        <h3>STAY UP TO DATE</h3>
+        <form class="subscribe">
+          <input type="email" placeholder="Enter your email">
+          <button type="submit">SUBMIT</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer Bottom Section -->
+    <div class="footer-bottom">
+      <a href="#">Terms</a>
+      <a href="#">Privacy</a>
+      <a href="#">Cookies</a>
+    </div>
+  </footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
